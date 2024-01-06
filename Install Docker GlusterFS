@@ -16,6 +16,8 @@ AllNodes=("${Docker_Manager_IPs[@]}" "${Docker_Worker_IPs[@]}")
 Install_Docker="curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null"
 InitializeSwarmNode=" docker swarm init --advertise-addr ${Docker_Manager_IPs[0]}"
 DockerSwarmLeave="sudo docker swarm leave -f"
+replica_count="${#AllNodes[@]}"
+
 
 read -s -p "Please enter your SSH password for all nodes: " ssh_password
 
@@ -109,7 +111,7 @@ for node in "${AllNodes[@]}"; do
 done
 
 # Create Gluster volume command
-command="sudo gluster volume create staging-gfs replica 5"
+command="sudo gluster volume create staging-gfs replica $replica_count"
 for server in "${AllNodes[@]}"; do
   command+=" $server:/gluster/volume1"
 done
