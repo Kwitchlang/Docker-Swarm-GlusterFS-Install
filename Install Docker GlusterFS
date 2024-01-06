@@ -1,0 +1,149 @@
+#!/bin/bash
+
+######### VARIABLES
+user="ubuntu"
+certName="id_rsa"
+
+
+Docker_Manager_IPs=("10.10.7.38" "10.10.7.39" "10.10.7.3")
+Docker_Worker_IPs=("10.10.7.4" "10.10.7.5")
+AllNodes=("${Docker_Manager_IPs[@]}" "${Docker_Worker_IPs[@]}")
+
+
+
+
+######### COMMANDS
+Install_Docker="curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null"
+InitializeSwarmNode=" docker swarm init --advertise-addr ${Docker_Manager_IPs[0]}"
+DockerSwarmLeave="sudo docker swarm leave -f"
+
+read -s -p "Please enter your SSH password for all nodes: " ssh_password
+
+
+######### Generate SSH Keys
+ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
+
+######### Move SSH certs to ~/.ssh and change permissions
+clear
+
+
+echo -e " \033[32;5m Copying SSH Keys \033[0m"
+cp /home/"$user"/{"$certName","$certName.pub"} /home/"$user"/.ssh
+chmod 600 /home/"$user"/.ssh/"$certName"
+chmod 644 /home/"$user"/.ssh/"$certName.pub"
+
+
+######### Create SSH Config file to ignore checking (don't use in production!)
+echo "StrictHostKeyChecking no" > ~/.ssh/config
+
+
+######### Add ssh keys for all nodes
+echo -e " \033[94m Add ssh keys for all nodes \033[0m"
+for node in "${AllNodes[@]}"; do
+ ssh-copy-id "$user"@"$node"
+done
+
+
+######### Install Docker on all nodes and run additional sudo commands
+echo -e " \033[32;5m$node - Installing Docker & GlusterFS to $AllNodes[@] \033[0m"
+for node in "${AllNodes[@]}"; do
+
+
+######### Run Install_Docker command with sudo, passing password as variable
+	ssh -t "$user"@"$node" <<EOF
+	echo -e " \033[94m               Installing Docker on: $node \033[0m"
+	echo '$ssh_password' | sudo -S sh -c '$Install_Docker'
+	echo -e " \033[32;5m Installing GlusterFS \033[0m"
+	sudo apt install software-properties-common glusterfs-server -y
+	sudo systemctl start glusterd
+	sudo systemctl enable glusterd
+	sudo mkdir -p /gluster/volume1
+	exit
+EOF
+done
+
+######### Initialize Swarm Cluster on first Manager Node
+ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
+  echo "$ssh_password" | sudo -S sh -c "$InitializeSwarmNode"
+  for role in "manager" "worker"; do
+    output=\$(sudo docker swarm join-token \$role)
+    token=\$(echo "\$output" | grep -oP 'docker swarm join --token \K\S+')
+    echo "\$token" > "\${role^}.txt"
+    echo "\${role^} Join token: \$(<\${role^}.txt)"
+  done
+EOF
+
+
+######### Save Tokens as Variables
+Manager=$(<Manager.txt)
+Worker=$(<Worker.txt)
+
+
+######### Add Manager Nodes from the Second Index
+for node in "${Docker_Manager_IPs[@]:1}"; do
+    ssh -t "$user"@"$node" <<EOF
+        echo "$ssh_password" | sudo -S sh -c ''
+        echo -e "\033[0;35m$node - Configuring as Manager Node \033[0m"
+        echo -e "\033[0;35mToken - $Manager \033[0m"
+        echo -e "\033[0m \033[0m"
+        sudo docker swarm join --token $Manager "${Docker_Manager_IPs[0]}:2377"
+		exit
+EOF
+done
+
+######### Add Worker Nodes to swarm
+for node in "${Docker_Worker_IPs[@]}"; do
+    ssh -t "$user"@"$node" <<EOF
+        echo "$ssh_password" | sudo -S sh -c ''
+        echo -e "\033[0;35m$node - Configuring as Worker Node \033[0m"
+        echo -e "\033[0;35mToken - $Worker \033[0m"
+        echo -e "\033[0m \033[0m"
+        sudo docker swarm join --token $Worker "${Docker_Manager_IPs[0]}:2377"
+		exit
+EOF
+done
+######### Configure Gluster for All nodes
+# Probe all Gluster peers
+for node in "${AllNodes[@]}"; do
+  gluster peer probe "$node"
+done
+
+# Create Gluster volume command
+command="sudo gluster volume create staging-gfs replica 5"
+for server in "${AllNodes[@]}"; do
+  command+=" $server:/gluster/volume1"
+done
+command+=" force"
+
+# Execute the final command
+echo "Executing command: $command"
+eval "$command"
+
+# Start the Gluster volume
+sudo gluster volume start staging-gfs
+
+# Connect all nodes to GlusterFS
+for node in "${AllNodes[@]}"; do
+  ssh -t "$user"@"$node" <<EOF
+    echo "$ssh_password" | sudo -S sh -c 'echo "localhost:/staging-gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0" >> /etc/fstab'
+    sudo mount.glusterfs localhost:/staging-gfs /mnt
+    sudo chown -R root:docker /mnt
+	sudo mkdir /mnt/Portainer
+    exit
+EOF
+done
+
+######### Install Portainer Last
+ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
+  echo "$ssh_password" | sudo -S sh -c ""
+  sudo mkdir /mnt/Portainer
+  echo -e " \033[94m Installing Portainer on: ${Docker_Manager_IPs[0]} \033[0m"
+  curl -L https://portainerswarm.espeez.me/ -o portainer-agent-stack.yml
+  sudo docker stack deploy -c portainer-agent-stack.yml portainer
+
+  done
+EOF
+
+
+
+sudo docker service ps portainer_portainer
