@@ -147,5 +147,7 @@ ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
 EOF
 
 
-
 sudo docker service ps portainer_portainer
+sudo docker node ls
+sudo gluster pool list
+df -h
