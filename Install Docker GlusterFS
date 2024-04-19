@@ -1,3 +1,5 @@
+#### Based off work by: Jims Garage, https://github.com/JamesTurland/JimsGarage/edit/main/Docker-Swarm/swarm.sh
+
 #!/bin/bash
 
 ######### VARIABLES
