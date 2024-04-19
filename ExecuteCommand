@@ -1,0 +1,4 @@
+#TrueNAs WebDav
+curl -k https://10.10.1.1:8081/files/initializeSwarm.sh | sed -e 's/\r//g' > swarm.sh && \
+chmod a+x swarm.sh && \
+sudo bash ./swarm.sh
