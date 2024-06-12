@@ -1,0 +1,36 @@
+[All Nodes]
+sudo su
+echo "10.10.5.1  manager1" >> /etc/hosts
+echo "10.10.5.2  manager2" >> /etc/hosts
+echo "10.10.5.3  manager3" >> /etc/hosts
+echo "10.10.5.4  worker1" >> /etc/hosts
+echo "10.10.5.5  worker2" >> /etc/hosts
+
+##sudo add-apt-repository ppa:gluster/glusterfs-10
+sudo apt update
+sudo apt install software-properties-common glusterfs-server -y
+##sudo apt install glusterfs-server -y
+
+sudo systemctl start glusterd && sudo systemctl enable glusterd
+
+[Host node Only]
+sudo -s
+gluster peer probe manager1; gluster peer probe manager2;gluster peer probe manager3;gluster peer probe worker1;gluster peer probe worker2;
+
+[All Nodes]
+sudo mkdir -p /gluster/volumes
+
+[Host Node Only] Take note of the replica number
+sudo gluster volume create staging-gfs replica 5 manager1:/gluster/volumes manager2:/gluster/volumes manager3:/gluster/volumes worker1:/gluster/volumes worker2:/gluster/volumes force
+sudo gluster volume start staging-gfs
+
+[All Nodes]
+sudo echo 'localhost:/staging-gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
+sudo mount.glusterfs localhost:/staging-gfs /mnt
+sudo curl -fsSL https://get.docker.com | bash
+sudo chown -R root:docker /mnt
+exit
+
+df -h
+
+Notes: everything in /mnt is replicated, Dont use /gluster/volumes
