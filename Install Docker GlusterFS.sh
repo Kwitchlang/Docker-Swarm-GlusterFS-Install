@@ -86,8 +86,7 @@ sudo gluster volume start staging-gfs
 for node in "${AllNodes[@]}"; do
 	ssh -t "$user"@"$node" <<EOF
 		echo '$ssh_password' | sudo -S sh -c ''
-		#echo "localhost:/staging-gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0" | sudo tee -a /etc/fstab >/dev/null
-		sudo echo 'localhost:/staging-gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0' >> /etc/fstab
+                sudo echo "localhost:/staging-gfs /mnt glusterfs defaults,_netdev,backupvolfile-server=localhost 0 0" | sudo tee -a /etc/fstab >/dev/null
 		sudo mount.glusterfs localhost:/staging-gfs /mnt
 		curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null
 		sudo chown -R root:docker /mnt
