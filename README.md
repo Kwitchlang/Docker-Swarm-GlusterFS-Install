@@ -14,3 +14,8 @@ curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Inst
 sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
+
+
+## To do
+- [ ] Enable glusterfs to mount on reboot
+- [ ] Install GlusterFS plugin to work with docker compose
