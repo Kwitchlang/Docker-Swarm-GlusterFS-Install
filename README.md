@@ -1,3 +1,7 @@
+## Why I made this?
+I wanted a really minimal hands off approach to deploying GLUSTERFS and setting up docker swarm in an all-in-one script
+
+
 ## Instructions
 
 
