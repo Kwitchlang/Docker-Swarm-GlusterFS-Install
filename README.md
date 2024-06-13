@@ -23,7 +23,7 @@ sudo bash ./swarm.sh
 ```
 
 > [!IMPORTANT]
-> Key information users need to know to achieve their goal.
+> Please note code execution on this poses MANY security risks - use at your own risk :)
 
 
 ## To do
