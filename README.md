@@ -23,6 +23,8 @@ sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
 
+Please note there is an array called Managers and Workers - Add your server IPs that you want to deploy this on.
+
 > [!IMPORTANT]
 > Please note code execution on this poses MANY security risks - use at your own risk :)
 
