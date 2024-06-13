@@ -35,3 +35,4 @@ Please note there is an array called Managers and Workers - Add your server IPs 
 ## To do
 - [x] Enable glusterfs to mount on reboot
 - [ ] Install GlusterFS plugin to work with docker compose
+- [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes, I want this to be done off any server that wont be part of the cluster
