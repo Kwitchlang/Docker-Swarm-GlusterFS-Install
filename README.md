@@ -33,5 +33,5 @@ Please note there is an array called Managers and Workers - Add your server IPs 
 
 
 ## To do
-- [ ] Enable glusterfs to mount on reboot
+- [x] Enable glusterfs to mount on reboot
 - [ ] Install GlusterFS plugin to work with docker compose
