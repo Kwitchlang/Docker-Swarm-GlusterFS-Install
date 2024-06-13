@@ -30,6 +30,7 @@ Please note there is an array called Managers and Workers - Add your server IPs 
 
 > [!IMPORTANT]
 > Please note code execution on this poses MANY security risks - use at your own risk :)
+> This is more of a proof of concept
 
 
 ## To do
