@@ -2,6 +2,9 @@
 I wanted a really minimal hands off approach to deploying GLUSTERFS and setting up docker swarm in an all-in-one script
 
 
+## Prequisites
+X amount of servers with the same username and Password
+
 ## Instructions
 
 Tested working on Ubuntu Server 23.10 (minimal installation)
