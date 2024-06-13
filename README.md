@@ -8,7 +8,7 @@ Many thanks to Techdox for the glusterfs setup:
 https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 
 
-Run these commands on nmanager 1 (Whatever server you decide!)
+Run these commands on manager1 (Whatever server you decide!)
 Make sure all your nodes are using the same password 
 ```
 curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Install/main/Install%20Docker%20GlusterFS.sh | sed -e 's/\r//g' > swarm.sh && \
