@@ -44,7 +44,7 @@ curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Inst
 sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
-
+This command ` sed -e 's/\r//g' > swarm.sh ` is used to strip any windows characters from scripts - Usefull when useing a webdav server for hosting shell files.
 
 > [!IMPORTANT]
 > Please note code execution on this poses MANY security risks - use at your own risk :)
