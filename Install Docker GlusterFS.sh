@@ -12,6 +12,8 @@ Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3") # Enter your Manager Se
 Docker_Worker_IPs=("10.10.5.4" "10.10.5.5") # Enter your Worker Server's IP here
 
 Use_APTCache=True # True/False - False will disable injecting the APT cache Function
+
+# Check on line 95/96 to Disable APT caching
 APTCacheIP="10.10.1.2:${APTCachePort}"
 APTCachePort=3142 # Define the port if not set
 
@@ -22,8 +24,6 @@ APTCachePort=3142 # Define the port if not set
 AllNodes=("${Docker_Manager_IPs[@]}" "${Docker_Worker_IPs[@]}")
 replica_count="${#AllNodes[@]}"
 certName="id_rsa"
-IFS=':' read -r APTCacheIP APTCachePort <<< "${APTCacheIP}"
-APTCachePort=3142
 ######### COMMANDS #########
 
 InitializeSwarmNode=" docker swarm init --advertise-addr ${Docker_Manager_IPs[0]}"
