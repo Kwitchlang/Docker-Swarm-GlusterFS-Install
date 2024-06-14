@@ -166,6 +166,7 @@ url="https://${Docker_Manager_IPs[0]}:9443"
 wait_for_url() {
   while ! curl -s --insecure --head "$url" | grep "200 OK" > /dev/null; do
     clear
+    echo "Deploying Portainer..."
     echo "Waiting for $url to be available..."
     sleep 5
   done
@@ -183,7 +184,7 @@ echo _______________________________________________________________
 echo
 echo
 # Output clickable link
-echo -e "\e]8;;$url\aClick here to access your installed Portainer SWARM instance\e]8;;\a"
+echo -e "\e]8;;$url\aClick here to access your installed Portainer SWARM instance (CRTL+ Click)\e]8;;\a"
 echo
 echo
 
