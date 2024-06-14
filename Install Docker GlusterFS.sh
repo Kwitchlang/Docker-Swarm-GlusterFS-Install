@@ -164,6 +164,7 @@ df -h
 echo _______________________________________________________________
 sudo docker service ls
 echo _______________________________________________________________
-echo -e '\e]8;;https://${Docker_Manager_IPs[0]}:9443\Click here to access your installed Portainer SWARM instance\e]8;;\a'  
+echo -e "\e]8;;https://${Docker_Manager_IPs[0]}:9443\aClick here to access your installed Portainer SWARM instance\e]8;;\a"
+
 
 
