@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 
 
 ## Why I made this?
-I wanted a really zero-touch approach to deploying GLUSTERFS and setting up docker swarm in an all-in-one script, idealy for a high availability, scalable docker environment with persistant storage accross ALL nodes.
+I wanted a really zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if somethin fails, The storage will be replicated accross all nodes and pick up where it left off by moving the docker container to another node
 
 ## Features:
 - [X] 90% is remote code execution (SSH to the nodes)
