@@ -24,7 +24,8 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 * X amount of servers with the same username and Password
 Set the following variables at acolodate your servers
 
-* user="ubuntu"
+*Variables to change
+* * user="ubuntu"
 * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
 * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
 
