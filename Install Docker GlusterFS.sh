@@ -154,3 +154,6 @@ echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 sudo docker service ls
 echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 
+echo -e '\e]8;;https://${Docker_Manager_IPs[0]}:9443\Click here to access your installed Portainer SWARM instance\e]8;;\a'  
+
+
