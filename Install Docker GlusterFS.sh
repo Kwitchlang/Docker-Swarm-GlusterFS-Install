@@ -1,25 +1,36 @@
 #!/bin/bash
 
-######### VARIABLES
-user="ubuntu"
-certName="id_rsa"
 
 
-Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
-Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
+#####################################################################################################################
+######### can touch variables
+
+user="ubuntu" #This the user that is on all servers
+Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3") # Enter your Manager Server's IP here
+Docker_Worker_IPs=("10.10.5.4" "10.10.5.5") # Enter your Worker Server's IP here
+
+Use_APTCache=True # True/False - False will disable injecting the APT cache Function
+Use_APTCacheIP="10.10.1.2:${APTCachePort}"
+APTCachePort=3142 # Define the port if not set
+
+#####################################################################################################################
+
+###### Don't Touch Please
+
 AllNodes=("${Docker_Manager_IPs[@]}" "${Docker_Worker_IPs[@]}")
 replica_count="${#AllNodes[@]}"
-
-
+certName="id_rsa"
+IFS=':' read -r APTCacheIP APTCachePort <<< "${Use_APTCacheIP}"
+APTCachePort=3142
 ######### COMMANDS #########
-Install_Docker="curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null"
+
 InitializeSwarmNode=" docker swarm init --advertise-addr ${Docker_Manager_IPs[0]}"
 
-######### RECOVERY COMMANDS #########
-DockerSwarmLeave="sudo docker swarm leave -f"
-
+#####################################################################################################################
+################################
+################################
+######### Start Script #########
 read -s -p "Enter your SSH password for all nodes: " ssh_password
-
 
 ######### Generate SSH Keys #########
 ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa -N ""
@@ -48,9 +59,13 @@ done
 for node in "${AllNodes[@]}"; do
 	ssh -t "$user"@"$node" <<EOF
 		echo '$ssh_password' | sudo -S sh -c ''
-  		######### Add APT Cache (Located in UNRAID - Comment out if not needed)
-		sudo sh -c 'echo "Acquire::HTTP::Proxy \"http://10.10.1.2:3142\";" >> /etc/apt/apt.conf.d/01proxy'
-		sudo sh -c 'echo "Acquire::HTTPS::Proxy \"false\";" >> /etc/apt/apt.conf.d/01proxy'
+
+		######### Add APT Cache if enabled
+		if [ "$Use_APTCache" = True ]; then
+			sudo sh -c 'echo "Acquire::HTTP::Proxy \"http://${APTCacheIP}:${APTCachePort}\";" >> /etc/apt/apt.conf.d/01proxy'
+			sudo sh -c 'echo "Acquire::HTTPS::Proxy \"false\";" >> /etc/apt/apt.conf.d/01proxy'
+		fi
+
 		sudo apt update
 		sudo apt install software-properties-common glusterfs-server -y
 		sudo systemctl start glusterd && sudo systemctl enable glusterd
