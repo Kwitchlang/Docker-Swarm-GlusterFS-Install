@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+# Redeployments; Use Directus for Host/MAC address caching and Swarm token Validation for joing a new Node to the cluster. 
 
 #####################################################################################################################
 ######### can touch variables
