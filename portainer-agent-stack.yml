@@ -22,7 +22,7 @@ services:
       - "8000:8000"
     volumes:
       - type: bind
-        source: /mnt/Portainer
+        source: /mnt/Docker/Portainer
         target: /data
     networks:
       - agent_network
