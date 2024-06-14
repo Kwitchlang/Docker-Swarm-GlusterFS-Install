@@ -9,7 +9,7 @@ user="ubuntu" #This the user that is on all servers
 Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3") # Enter your Manager Server's IP here
 Docker_Worker_IPs=("10.10.5.4" "10.10.5.5") # Enter your Worker Server's IP here
 
-Use_APTCache=False # True/False - False will disable injecting the APT cache Function
+Use_APTCache=True # True/False - False will disable injecting the APT cache Function
 Use_APTCacheIP="10.10.1.2:${APTCachePort}"
 APTCachePort=3142 # Define the port if not set
 
