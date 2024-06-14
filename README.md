@@ -2,11 +2,12 @@
 I wanted a really minimal hands off approach to deploying GLUSTERFS and setting up docker swarm in an all-in-one script, idealy for a high availability, scalable docker environment with persistant storage accross nodes.
 
 ## Features:
+- [X] 90% is remote code execution (SSH to the nodes)
 - [X] Minimal Password Entries (1 password + Each node password), Enters Sudo on all devices
 - [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers)
 - [X] Installs Docker to all nodes
-- [X] Configures Swarm Roles based of Array IP
-- [X] Connects and Stors portainer in GLUSTERFS storage pool
+- [X] Configures Swarm Roles based of IP Arrays
+- [X] Connects and Stores portainer in GLUSTERFS storage pool
 
 ## Prequisites
 X amount of servers with the same username and Password
@@ -42,4 +43,4 @@ Please note there is an array called Managers and Workers - Add your server IPs 
 ## To do
 - [x] Enable glusterfs to mount on reboot
 - [ ] Install GlusterFS plugin to work with docker compose
-- [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes, I want this to be done off any server that wont be part of the cluster
+- [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes and stores the configs there, I want this to be done off any server that wont be part of the cluster
