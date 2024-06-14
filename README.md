@@ -21,12 +21,14 @@ I wanted a really minimal hands off approach to deploying GLUSTERFS and setting 
 - [X] Connects and Stores portainer in GLUSTERFS storage pool
 
 ## Prequisites
-X amount of servers with the same username and Password
+* X amount of servers with the same username and Password
 Set the following variables at acolodate your servers
 
 * user="ubuntu"
 * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
 * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
+
+Please note there is an APT cache at line 64 - Please Comment this out if not used!
 
 ## Instructions
 
