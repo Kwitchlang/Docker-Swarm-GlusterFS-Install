@@ -32,7 +32,7 @@ Please note there is an APT cache at line 64 - Please Comment this out if not us
 
 ## Instructions
 First SSH into your first Manager Node
-* ssh -t ubuntu@<First_manager_node_IP>
+` ssh -t ubuntu@<First_manager_node_IP>
 Run these commands on manager1 (Whatever server you decide!)
 Make sure all your nodes are using the same password 
 
