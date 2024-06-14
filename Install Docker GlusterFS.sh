@@ -180,11 +180,12 @@ df -h
 echo _______________________________________________________________
 sudo docker service ls
 echo _______________________________________________________________
-
-
+echo
+echo
 # Output clickable link
 echo -e "\e]8;;$url\aClick here to access your installed Portainer SWARM instance\e]8;;\a"
-
+echo
+echo
 
 
 
