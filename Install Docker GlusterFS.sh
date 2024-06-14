@@ -148,12 +148,11 @@ ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
   curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Install/main/portainer-agent-stack.yml | sed -e 's/\r//g' > portainer-agent-stack.yml
   sudo docker stack deploy -c portainer-agent-stack.yml portainer
 EOF
-echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+echo _______________________________________________________________
 df -h
-echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+echo _______________________________________________________________
 sudo docker service ls
-echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
-
+echo _______________________________________________________________
 echo -e '\e]8;;https://${Docker_Manager_IPs[0]}:9443\Click here to access your installed Portainer SWARM instance\e]8;;\a'  
 
 
