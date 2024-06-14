@@ -186,7 +186,7 @@ echo _______________________________________________________________
 echo
 echo
 # Output clickable link
-echo -e "\e]8;;$url\aClick here to access your installed Portainer SWARM instance (CRTL+ Click)\e]8;;\a"
+echo -e "\e]8;;$url\aClick here to access your installed Portainer SWARM instance (CTRL+ Click)\e]8;;\a"
 echo
 echo
 
