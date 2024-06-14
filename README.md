@@ -28,7 +28,8 @@ Set the following variables at acolodate your servers
 * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
 * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
 
-Please note there is an APT cache at line 64 - Please Comment this out if not used!
+> [!WARNING]
+> Please note: There is an APT cache at line 64 - Please Comment this out if not used!
 
 ## Instructions
 First SSH into your first Manager Node
