@@ -56,3 +56,8 @@ There are external commands ` curl -fsSL https://get.docker.com | sudo -S bash >
 - [ ] Enable Persistant storage accross all nodes using docker copmose - Currently This only works providing the origional host with the data is still live (and its just the application that crashed), if the Actual Server crashed, a new instance and data is created - Not Ideal
 - [ ] Install GlusterFS plugin to work with docker compose
 - [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes and stores the configs there, I want this to be done off any server that wont be part of the cluster
+
+## Enterprise To do (Maybe)
+- [ ] Use Directus/APi for storing Swarm worker/manager join tokens, recording Device hostnames/MAC addresses - This will be usefull for when wanting to add a node to the server that weren't  already setup in the (Add device credentials, IP, and Node type Worker/Manager in staging to Directus)
+- [ ] Create a cron job on installed nodes that acts like an agent for Directus for monitoring the servers status  
+
