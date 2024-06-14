@@ -21,10 +21,10 @@ Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")\
 
 Tested working on Ubuntu Server 23.10 (minimal installation)
 
-Many thanks to Jim's Garage for a lot of the heavy lifting!
-https://github.com/JamesTurland/JimsGarage/blob/main/Docker-Swarm/swarm-3-nodes.sh
+Many thanks to Jim's Garage for a lot of the heavy lifting!\
+https://github.com/JamesTurland/JimsGarage/blob/main/Docker-Swarm/swarm-3-nodes.sh\
 
-Many thanks to Techdox for the glusterfs setup:
+Many thanks to Techdox for the glusterfs setup:\
 https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 
 
