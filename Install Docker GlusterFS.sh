@@ -50,6 +50,7 @@ ping_nodes() {
 # Ping all nodes
 if ! ping_nodes "${AllNodes[@]}"; then
   echo "Not all nodes are reachable. Exiting."
+  echo _________________________________
   exit 1
 fi
 
