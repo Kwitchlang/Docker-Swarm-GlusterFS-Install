@@ -165,7 +165,7 @@ url="https://${Docker_Manager_IPs[0]}:9443"
 # Function to check if the URL is reachable
 wait_for_url() {
   while ! curl -s --insecure --head "$url" | grep "200 OK" > /dev/null; do
-  clear
+    clear
     echo "Waiting for $url to be available..."
     sleep 5
   done
