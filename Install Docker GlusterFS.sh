@@ -31,6 +31,32 @@ InitializeSwarmNode=" docker swarm init --advertise-addr ${Docker_Manager_IPs[0]
 #####################################################################################################################
 ################################
 ################################
+######### Sanity Ping check #########
+
+# Function to ping nodes
+ping_nodes() {
+  local nodes=("$@")
+  for node in "${nodes[@]}"; do
+    if ! ping -c 1 "$node" &>/dev/null; then
+      echo "Node $node is unreachable."
+      return 1
+    fi
+  done
+  return 0
+}
+
+# Ping all nodes
+if ! ping_nodes "${AllNodes[@]}"; then
+  echo "Not all nodes are reachable. Exiting."
+  exit 1
+fi
+
+echo "All nodes are reachable. Continuing with the script."
+
+
+
+################################
+################################
 ######### Start Script #########
 read -s -p "Enter your SSH password for all nodes: " ssh_password
 
