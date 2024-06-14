@@ -59,13 +59,9 @@ done
 for node in "${AllNodes[@]}"; do
 	ssh -t "$user"@"$node" <<EOF
 		echo '$ssh_password' | sudo -S sh -c ''
-
-		######### Add APT Cache if enabled
-		if [ "$Use_APTCache" = True ]; then
-			sudo sh -c 'echo "Acquire::HTTP::Proxy \"http://${APTCacheIP}:${APTCachePort}\";" >> /etc/apt/apt.conf.d/01proxy'
-			sudo sh -c 'echo "Acquire::HTTPS::Proxy \"false\";" >> /etc/apt/apt.conf.d/01proxy'
-		fi
-
+  		######### Add APT Cache (Located in UNRAID - Comment out if not needed)
+		sudo sh -c 'echo "Acquire::HTTP::Proxy \"http://10.10.1.2:3142\";" >> /etc/apt/apt.conf.d/01proxy'
+		sudo sh -c 'echo "Acquire::HTTPS::Proxy \"false\";" >> /etc/apt/apt.conf.d/01proxy'
 		sudo apt update
 		sudo apt install software-properties-common glusterfs-server -y
 		sudo systemctl start glusterd && sudo systemctl enable glusterd
