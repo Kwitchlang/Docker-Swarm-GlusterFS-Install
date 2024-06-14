@@ -1,6 +1,12 @@
 ## Why I made this?
 I wanted a really minimal hands off approach to deploying GLUSTERFS and setting up docker swarm in an all-in-one script, idealy for a high availability, scalable docker environment with persistant storage accross nodes.
 
+## Features:
+- [X] Minimal Password Entries (1 password + Each node password), Enters Sudo on all devices
+- [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers)
+- [X] Installs Docker to all nodes
+- [X] Configures Swarm Roles based of Array IP
+- [X] Connects and Stors portainer in GLUSTERFS storage pool
 
 ## Prequisites
 X amount of servers with the same username and Password
