@@ -43,8 +43,8 @@ sudo bash ./swarm.sh
 ```
 > [!IMPORTANT]
 Please note there is two array variables in the script!
-> * Managers - Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
-> * Workers - Add your server IPs that you want to deploy this on - this can be any other ammount
+> * Docker_Manager_IPs - Array of IP Addresses: Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
+> * Docker_Worker_IPs - Array of IP Addresses: Add your server IPs that you want to deploy this on - this can be any other amount
 
 
 
