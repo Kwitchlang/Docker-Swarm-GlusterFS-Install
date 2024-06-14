@@ -39,8 +39,14 @@ curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Inst
 sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
+> [!IMPORTANT]
+Please note there is an array called
+> * Managers - Idealy 3 manager servers, make sure to run the script on the first Manage server
+> * Workers - Add your server IPs that you want to deploy this on - this can be any other ammount
 
-Please note there is an array called Managers and Workers - Add your server IPs that you want to deploy this on.
+
+
+
 
 > [!IMPORTANT]
 > Please note code execution on this poses MANY security risks - use at your own risk :)
