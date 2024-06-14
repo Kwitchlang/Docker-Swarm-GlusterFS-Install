@@ -165,8 +165,10 @@ echo _______________________________________________________________
 sudo docker service ls
 echo _______________________________________________________________
 
+# Define the URL
 url="https://${Docker_Manager_IPs[0]}:9443"
 
+# Function to check if the URL is reachable
 wait_for_url() {
   while ! curl -s --insecure --head "$url" | grep "200 OK" > /dev/null; do
     echo "Waiting for $url to be available..."
@@ -174,12 +176,12 @@ wait_for_url() {
   done
 }
 
-
+# Call the function to wait until the URL is reachable
 wait_for_url
 
+# Output clickable link
+echo -e "\e]8;;$url\aClick here to access your installed Portainer SWARM instance\e]8;;\a"
 
-
-echo -e "\e]8;;https://${Docker_Manager_IPs[0]}:9443\aClick here to access your installed Portainer SWARM instance\e]8;;\a"
 
 
 
