@@ -144,7 +144,6 @@ done
 
 ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
   echo "$ssh_password" | sudo -S sh -c ""
-  sudo mkdir /mnt/Portainer
   echo -e " \033[94m Installing Portainer on: ${Docker_Manager_IPs[0]} \033[0m"
   curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Install/main/portainer-agent-stack.yml | sed -e 's/\r//g' > portainer-agent-stack.yml
   sudo docker stack deploy -c portainer-agent-stack.yml portainer
