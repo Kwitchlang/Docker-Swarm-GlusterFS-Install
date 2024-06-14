@@ -29,7 +29,7 @@ Set the following variables at acolodate your servers
 * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
 
 > [!WARNING]
-> Please note: There is an APT cache at line 64 - Please Comment this out if not used!
+> Please note: There is an APT cache at line 64 - Please Comment this out if not used or set up! (image: sameersbn/apt-cacher-ng)
 
 ## Instructions
 First SSH into your first Manager Node
