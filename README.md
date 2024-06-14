@@ -1,3 +1,13 @@
+Tested working on Ubuntu Server 23.10 (minimal installation)
+
+Many thanks to Jim's Garage for a lot of the heavy lifting!\
+https://github.com/JamesTurland/JimsGarage/blob/main/Docker-Swarm/swarm-3-nodes.sh\
+
+Many thanks to Techdox for the glusterfs setup:\
+https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
+
+
+
 ## Why I made this?
 I wanted a really minimal hands off approach to deploying GLUSTERFS and setting up docker swarm in an all-in-one script, idealy for a high availability, scalable docker environment with persistant storage accross nodes.
 
@@ -18,15 +28,6 @@ Set the following variables at acolodate your servers
 * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
 
 ## Instructions
-
-Tested working on Ubuntu Server 23.10 (minimal installation)
-
-Many thanks to Jim's Garage for a lot of the heavy lifting!\
-https://github.com/JamesTurland/JimsGarage/blob/main/Docker-Swarm/swarm-3-nodes.sh\
-
-Many thanks to Techdox for the glusterfs setup:\
-https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
-
 
 Run these commands on manager1 (Whatever server you decide!)
 Make sure all your nodes are using the same password 
