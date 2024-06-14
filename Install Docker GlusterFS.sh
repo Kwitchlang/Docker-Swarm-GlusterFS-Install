@@ -5,7 +5,7 @@
 #Thanks Nova_Satus!
 
 #####################################################################################################################
-######### can touch variables
+######### EDN USER VARIABLES variables
 
 user="ubuntu" #This the user that is on all servers
 Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3") # Enter your Manager Server's IP here
