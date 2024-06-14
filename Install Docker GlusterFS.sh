@@ -32,7 +32,7 @@ InitializeSwarmNode=" docker swarm init --advertise-addr ${Docker_Manager_IPs[0]
 ################################
 ################################
 ######### Sanity Ping check #########
-
+sudo apt-get install -y iputils-ping
 # Function to ping nodes
 ping_nodes() {
   local nodes=("$@")
