@@ -21,7 +21,7 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 - [X] Minimal Password Entries (1 password + Each node password), Enters Sudo on all devices
 - [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers)
 - [X] Installs Docker to all nodes
-- [X] Configures Swarm Roles based of IP Arrays
+- [X] Configures Swarm Roles based off of IP Arrays
 - [X] Connects and Stores portainer in GLUSTERFS storage pool
 
 ## Prequisites
