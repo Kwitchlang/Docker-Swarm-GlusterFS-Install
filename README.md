@@ -21,13 +21,12 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 - [X] Connects and Stores portainer in GLUSTERFS storage pool
 
 ## Prequisites
-* X amount of servers with the same username and Password
-Set the following variables at acolodate your servers
 
 *Variables to change
-** user="ubuntu"
-* Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
-* Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
+ * user="ubuntu" - This User must be set with the same password accross all nodes.
+ * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3") - Array of IP Addresses: Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
+ * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5") - Array of IP Addresses: Add your server IPs that you want to deploy this on - this can be any other amount
+ * 
 
 > [!WARNING]
 > Please note: There is an APT cache at line 64 - Please Comment this out if not used or set up! (image: sameersbn/apt-cacher-ng)
@@ -44,13 +43,6 @@ curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Inst
 sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
-> [!IMPORTANT]
-Please note there is two array variables in the script!
-> * Docker_Manager_IPs - Array of IP Addresses: Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
-> * Docker_Worker_IPs - Array of IP Addresses: Add your server IPs that you want to deploy this on - this can be any other amount
-
-
-
 
 
 > [!IMPORTANT]
