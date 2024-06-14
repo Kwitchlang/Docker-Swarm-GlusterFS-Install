@@ -7,6 +7,10 @@ https://github.com/JamesTurland/JimsGarage/blob/main/Docker-Swarm/swarm-3-nodes.
 Many thanks to Techdox for the glusterfs setup:\
 https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 
+> [!IMPORTANT]
+> Please note, code execution on this likely poses MANY security risks - use at your own risk :)
+> This is more of a proof of concept
+
 
 
 ## Why I made this?
@@ -46,11 +50,6 @@ sudo bash ./swarm.sh
 ```
 This command ` sed -e 's/\r//g' > swarm.sh ` is used to strip any windows characters from scripts - Usefull when useing a webdav server for hosting bash files.\
 There are external commands ` curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null ` This is a file hosted by someone that will install Docker and Docker-compose.
-
-> [!IMPORTANT]
-> Please note code execution on this poses MANY security risks - use at your own risk :)
-> This is more of a proof of concept
-
 
 ## To do
 - [x] Enable glusterfs to mount on reboot
