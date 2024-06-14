@@ -40,8 +40,8 @@ sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
 > [!IMPORTANT]
-Please note there is an array called
-> * Managers - Idealy 3 manager servers, make sure to run the script on the first Manage server
+Please note there is two array variables in the script!
+> * Managers - Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
 > * Workers - Add your server IPs that you want to deploy this on - this can be any other ammount
 
 
