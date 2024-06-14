@@ -164,6 +164,21 @@ df -h
 echo _______________________________________________________________
 sudo docker service ls
 echo _______________________________________________________________
+
+url="https://${Docker_Manager_IPs[0]}:9443"
+
+wait_for_url() {
+  while ! curl -s --insecure --head "$url" | grep "200 OK" > /dev/null; do
+    echo "Waiting for $url to be available..."
+    sleep 15
+  done
+}
+
+
+wait_for_url
+
+
+
 echo -e "\e]8;;https://${Docker_Manager_IPs[0]}:9443\aClick here to access your installed Portainer SWARM instance\e]8;;\a"
 
 
