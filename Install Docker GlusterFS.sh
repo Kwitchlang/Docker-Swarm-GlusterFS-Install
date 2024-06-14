@@ -94,8 +94,8 @@ for node in "${AllNodes[@]}"; do
 EOF
 done
 
-touch /mnt/Glustertest.txt
-mkdir /mnt/Portainer
+sudo mkdir /mnt/Docker
+sudo mkdir /mnt/Docker/Portainer
 
 ######### Generate Swarm Cluster Tokens on first Manager Node
 ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
@@ -146,6 +146,9 @@ ssh -t "$user"@"${Docker_Manager_IPs[0]}" <<EOF
   curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Install/main/portainer-agent-stack.yml | sed -e 's/\r//g' > portainer-agent-stack.yml
   sudo docker stack deploy -c portainer-agent-stack.yml portainer
 EOF
-
-sudo docker services ps
+echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+df -h
+echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+sudo docker service ls
+echo [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
 
