@@ -31,7 +31,8 @@ Set the following variables at acolodate your servers
 Please note there is an APT cache at line 64 - Please Comment this out if not used!
 
 ## Instructions
-
+First SSH into your first Manager Node
+* ssh -tubuntu@<First manager node IP >
 Run these commands on manager1 (Whatever server you decide!)
 Make sure all your nodes are using the same password 
 
