@@ -38,6 +38,7 @@ Run these commands on manager1 (Whatever server you decide!)
 Make sure all your nodes are using the same password 
 
 This command will point to the most recent version of my script, and executes it.
+Please read the scrip t- Never install something you don;t know or understand (Stanadard internet spheel :P)
 ```
 curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Install/main/Install%20Docker%20GlusterFS.sh | sed -e 's/\r//g' > swarm.sh && \
 sudo chmod a+x swarm.sh && \
