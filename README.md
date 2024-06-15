@@ -54,7 +54,7 @@ There are external commands ` curl -fsSL https://get.docker.com | sudo -S bash >
 ## To do
 - [x] Enable glusterfs to mount on reboot
 - [ ] fix issue: /mnt will not mount when theres been an ungraceful shutdown, a gracefull reboot will fix this (sudo reboot) 
-- [ ] Enable Persistant storage accross all nodes using docker copmose - Currently This only works providing the origional host with the data is still live (and its just the application that crashed), if the Actual Server crashed, a new instance and data is created - Not Ideal
+- [ ] Enable Persistant storage accross all nodes using docker compose - Currently This only works providing the origional host with the data is still live and accessable (and its just the application that crashed), if the actual server node crashed, a new instance and volume will be created fresh on that node, will no link to the previous data - Not ideal
 - [ ] Install GlusterFS plugin to work with docker compose
 - [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes and stores the configs there, I want this to be done off any server that wont be part of the cluster
 
