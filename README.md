@@ -33,7 +33,7 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
  * 
 
 > [!WARNING]
-> Please note: There is an APT cache at line 64 - Please Comment this out if not used or set up! (image: sameersbn/apt-cacher-ng)
+> Please note: There is an APT cache at line 95/96 - Please Comment this out if not used or set up! (image: sameersbn/apt-cacher-ng)
 
 ## Instructions
 First SSH into your first Manager Node
