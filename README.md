@@ -52,7 +52,7 @@ sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
 This command ` sed -e 's/\r//g' > swarm.sh ` is used to strip any windows characters from scripts - Usefull when useing a webdav server for hosting bash files.\
-There are external commands ` curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null ` This is a file hosted by someone that will install Docker and Docker-compose.
+There are external commands like ` curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null ` used in this script. This is a file hosted by someone that will install Docker and Docker-compose.
 
 ## To do
 - [x] Enable glusterfs to mount on reboot
