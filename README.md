@@ -27,7 +27,7 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 ## Prequisites
 
 Variables to change
- * user="ubuntu" \
+ * user="ubuntu"
  * * This User can be named anything but must be set with the same name and password accross all nodes - Please make sure this is set up first on your nodes, as this will not get created.
  * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
  * * Array of IP Addresses: Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
