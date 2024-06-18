@@ -14,12 +14,12 @@ https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 
 
 ## Why I made this?
-I wanted a really zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if somethin fails, The storage will be replicated accross all nodes and pick up where it left off by moving the docker container to another node
+I wanted a really zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if a node fully fails, The storage will be replicated accross all nodes and pick up where it left off by moving the docker container to another node
 
 ## Features:
 - [X] 90% is remote code execution (SSH to the nodes)
 - [X] Minimal Password Entries (1 password + Each node password), Enters Sudo on all devices
-- [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers)
+- [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers, or as many nodes as you want!)
 - [X] Installs Docker to all nodes
 - [X] Configures Swarm Roles based off of IP Arrays
 - [X] Connects and Stores portainer in GLUSTERFS storage pool
@@ -28,7 +28,7 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 
 Variables to change
  * user="ubuntu"
-   * This User can be named anything but must be set with the same name and password accross all nodes - Please make sure this is set up first on your nodes, as this will not get created.
+   * This User can be named anything but must be set with the same name and password accross all nodes - Please make sure this is set up first on your nodes, as this user will not get created from this script.
  * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
    * Array of IP Addresses: Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
  * Docker_Worker_IPs=("10.10.5.4" "10.10.5.5")
