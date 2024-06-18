@@ -41,7 +41,7 @@ Variables to change
 ## Instructions
 First SSH into your first Manager Node
 ` ssh -t ubuntu@<First_manager_node_IP> `
-Run these commands on manager1 (Whatever server you decide!)
+Run the bellow commands on this Manager 1 node (Whatever server you decide!)
 Make sure all your nodes are using the same password 
 
 This command will point to the most recent version of my script, and executes it.
