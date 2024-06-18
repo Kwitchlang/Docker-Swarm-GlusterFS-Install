@@ -22,13 +22,16 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 - [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers, or as many nodes as you want!)
 - [X] Installs Docker to all nodes
 - [X] Configures Swarm Roles based off of IP Arrays
+- [ ] Ping command ( This will be installed) to make sure all nodes listed are available
 - [X] Connects and Stores portainer in GLUSTERFS storage pool
 
 ## Prequisites
+Ubuntu 23.04 with the Ububtu Users set up (See Variables for instructions) 
+Preferable to set up nodes with static IP Address
 
 Variables to change
  * user="ubuntu"
-   * This User can be named anything but must be set with the same name and password accross all nodes - Please make sure this is set up first on your nodes, as this user will not get created from this script.
+   * This User can be named anything but must be set with the same name and password accross all nodes - Please make sure this is set up first on all your nodes, as this user will not get created from this script.
  * Docker_Manager_IPs=("10.10.5.1" "10.10.5.2" "10.10.5.3")
    * Array of IP Addresses: Idealy 3 manager servers - adds redundancy, make sure to run the script on the first Manage server
    * Make sure to adjust this according to how many Manager nodes you are going to use
