@@ -14,7 +14,7 @@ https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 
 
 ## Why I made this?
-I wanted a really zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if a node fully fails, The storage will be replicated accross all nodes and pick up where it left off by moving the docker container to another node
+I really wanted a low zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if a node fully fails - eg dies, The storage will be replicated accross all nodes and the container will be replicated to another node and pick up the data where it left off. 
 
 ## Features:
 - [X] 90% is remote code execution (SSH to the nodes)
@@ -22,7 +22,7 @@ I wanted a really zero-touch approach to deploying GLUSTERFS and setting up dock
 - [x] Installs GLUSTERFS across 5 Nodes (3 Managers, 2 Workers, or as many nodes as you want!)
 - [X] Installs Docker to all nodes
 - [X] Configures Swarm Roles based off of IP Arrays
-- [ ] Ping command ( This will be installed) to make sure all nodes listed are available
+- [X] Ping command ( This will be installed) to make sure all nodes listed are available
 - [X] Connects and Stores portainer in GLUSTERFS storage pool
 
 ## Prequisites
