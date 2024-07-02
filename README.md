@@ -55,7 +55,7 @@ curl -k https://raw.githubusercontent.com/Kwitchlang/Docker-Swarm-GlusterFS-Inst
 sudo chmod a+x swarm.sh && \
 sudo bash ./swarm.sh
 ```
-This command ` sed -e 's/\r//g' > swarm.sh ` is used to strip any windows characters from scripts - Usefull when useing a webdav server for hosting bash files.\
+This command ` sed -e 's/\r//g' > swarm.sh ` is used to strip any windows spefific Unicode characters from scripts - Usefull when using a webdav server for hosting bash files.\
 There are external commands like ` curl -fsSL https://get.docker.com | sudo -S bash >> /dev/null ` used in this script. This is a file hosted by someone that will install Docker and Docker-compose.
 
 ## To do
