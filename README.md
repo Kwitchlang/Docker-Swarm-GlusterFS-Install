@@ -16,6 +16,8 @@ https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 ## Why I made this?
 I really wanted a low zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if a node fully fails - eg dies, The storage will be replicated accross all nodes and the container will be replicated to another node and pick up the data where it left off. 
 
+Jims Garage was a really good tutorial, but was tailered to using Proxmox/VM set up and using services that proxmox provide - I really wanted to tailer it as though you are installing it baremetal hardware as most people may be doing. 
+
 ## Features:
 - [X] 90% is remote code execution (SSH to the nodes)
 - [X] Minimal Password Entries (1 password + Each node password), Enters Sudo on all devices
