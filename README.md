@@ -16,7 +16,7 @@ https://www.youtube.com/watch?v=Has6lUPdzzY&t=183s
 ## Why I made this?
 I really wanted a low zero-touch approach to deploying GLUSTERFS and setting up docker swarm with an all-in-one script, idealy for a high availability swarm cluster with persistant storage accross ALL nodes. So if a node fully fails - eg dies, The storage will be replicated accross all nodes and the container will be replicated to another node and pick up the data where it left off. 
 
-Jims Garage was a really good tutorial, but was tailered to using Proxmox/VM set up and using services that proxmox provide - I really wanted to tailer it as though you are installing it baremetal hardware as most people may be doing. 
+Jims Garage was a really good tutorial, but was tailered to using Proxmox/VM set up and using services that proxmox provide - I really wanted to tailer it as though you are installing it on baremetal hardware as most people may be doing. 
 
 ## Features:
 - [X] 90% is remote code execution (SSH to the nodes)
@@ -65,7 +65,7 @@ There are external commands like ` curl -fsSL https://get.docker.com | sudo -S b
 - [ ] fix issue: /mnt will not mount when theres been an ungraceful shutdown, a gracefull reboot will fix this (sudo reboot) 
 - [ ] Enable Persistant storage accross all nodes using docker compose - Currently This only works providing the origional host with the data is still live and accessable (and its just the application that crashed), if the actual server node crashed, a new instance and volume will be created fresh on that node, will no link to the previous data - Not ideal
 - [ ] Install GlusterFS plugin to work with docker compose - Currently Data Volumes have to use an existing path (eg /mnt/Docker/MyAppData/), This mean creating a folder for every container, I want to use something that works dynamically and creates the Volume Automagically. 
-- [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes and stores the configs there, I want this to be done off any server that wont be part of the cluster
+- [ ] Allow for pure remote code execution - Currently it executes on one of the manager nodes and stores the configs there, Idealy this script should be able to run on any server that wont be part of the cluster, May look into using a database (Directus) that can hold the information, and do a api request to retrieve the existing Swarm role keys
 
 ## Enterprise To do (Maybe)
 - [ ] Use Directus/APi for storing Swarm worker/manager join tokens, recording Device hostnames/MAC addresses - This will be usefull for when wanting to add a node to the server that weren't  already setup in the (Add device credentials, IP, and Node type Worker/Manager in staging to Directus)
