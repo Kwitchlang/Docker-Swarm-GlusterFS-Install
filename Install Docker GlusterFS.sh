@@ -39,7 +39,7 @@ ping_nodes() {
   local nodes=("$@")
   for node in "${nodes[@]}"; do
     if ! ping -c 1 "$node" &>/dev/null; then
-      echo _________________________________
+      echo 
       echo "Node $node is unreachable."
       echo _________________________________
       return 1
